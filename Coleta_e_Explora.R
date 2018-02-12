@@ -115,4 +115,3 @@ ggplot(d,aes(longitude,latitude)) +
   geom_polygon(data=ca,aes(x=long,y=lat,group=group),color='gray',fill=NA,alpha=.35)+
   geom_point(aes(color = Views),size=.15,alpha=.25) +
   xlim(-125,-110)+ylim(30,45)
-
