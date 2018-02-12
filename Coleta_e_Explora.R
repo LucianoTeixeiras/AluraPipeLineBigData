@@ -1,13 +1,13 @@
 ## Diretório corrente 
-setwd("C:\\Users\\eduar\\OneDrive\\aBig Data\\aAlura\\R")
+setwd("D:/Users/luciano/Documents/GitHub/AluraPipeLineBigData/01 - O pipeline do Big Data")
 
 
 
 ######################################## 1) Coleta
 
 ## Packages nessários para busca e extração de dados em páginas Web
-# install.packages('httr') 
-# install.packages('XML') 
+install.packages('httr') 
+install.packages('XML') 
 library(httr) 
 library(XML)
 
@@ -17,7 +17,7 @@ df_OVNI  <- data.frame()
 mes_corrente = 9
 ano_corrente = 1997
 ano_mes_corrente = (ano_corrente * 100) + mes_corrente
-while (ano_mes_corrente  <= 201712) {
+while (ano_mes_corrente  <= 201801) {
   site <- paste("http://www.nuforc.org/webreports/ndxe", as.character(ano_mes_corrente), ".html")
   site <- gsub (" ", "", site)
   html2 <- GET(site)
