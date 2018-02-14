@@ -132,14 +132,3 @@ head(ca)
 View(ca)
 
 ## Futuramente vamos incrementar o processo de armazenamento
-
-
-
-
-
-
-
-
-
-
-
