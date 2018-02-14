@@ -15,6 +15,8 @@ View(df_OVNI)
 any(is.na(df_OVNI$City))
 any(df_OVNI$City=="")
 
+write.csv(rbind(df_OVNI), file = "OVNIS.csv") 
+
 df_OVNI <- df_OVNI[!(df_OVNI$City == "" | is.na(df_OVNI$City)), ]
 # Cheque novo tamanho (MB, observa??es e vari?veis)
 
@@ -96,10 +98,6 @@ df_OVNI$Sight_Year <- NULL
 ## dura??es normalizadas ou at? mesmo fazer um tratamento de texto na coluna 
 ## Summary
 
-
-
-
-
 ######################################## 4) Armazenamento
 
 #MongoDB
@@ -132,3 +130,9 @@ head(ca)
 View(ca)
 
 ## Futuramente vamos incrementar o processo de armazenamento
+
+
+#Exportando para csv arquivo OVNI
+write.csv(rbind(df_OVNI), file = "OVNIS.csv") 
+
+View(df_OVNI)

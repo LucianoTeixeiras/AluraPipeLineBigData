@@ -40,7 +40,8 @@ while (ano_mes_corrente  <= 201801) {
 }
 write.csv(rbind(df_OVNI), file = "OVNIS.csv") 
 
-# df_OVNI <- read.csv("OVNIS.csv",stringsAsFactors = FALSE)
+#Carrega arquivo
+df_OVNI <- read.csv("OVNIS.csv",stringsAsFactors = FALSE)
 
 ######################################## 2) Explore
 
@@ -76,7 +77,7 @@ OVNI_CA = sqldf("select Shape, City, count(*) Views
 
 
 ## Packages para montar gráficos
-# install.packages('ggplot2')
+install.packages('ggplot2')
 library(ggplot2)
 
 OVNI_EUA_por_Tipo = sqldf("select State, Shape, count(*) Views  
@@ -89,7 +90,7 @@ OVNI_EUA_por_Tipo = sqldf("select State, Shape, count(*) Views
 ggplot(OVNI_EUA_por_Tipo, aes(x = State, y = Views)) +
   geom_col(aes(fill = Shape))
 
-# install.packages('zipcode') 
+install.packages('zipcode') 
 library(zipcode)
 data(zipcode)
 
@@ -98,7 +99,7 @@ data(zipcode)
 d <- merge(OVNI_EUA_por_Cidade, zipcode, by=c("state","city"))
 
 ## Packages para mapas
-#install.packages("ggmap")
+install.packages("ggmap")
 library(ggmap)
 
 us<-map_data('state')
