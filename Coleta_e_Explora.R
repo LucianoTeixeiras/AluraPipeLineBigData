@@ -98,7 +98,8 @@ View(OVNI_EUA_por_Tipo)
 ggplot(OVNI_EUA_por_Tipo, aes(x = State, y = Views)) +
   geom_col(aes(fill = Shape))
 
-# install.packages('zipcode') 
+install.packages('zipcode')
+
 library(zipcode)
 data(zipcode)
 View(zipcode)
@@ -110,7 +111,7 @@ d <- merge(OVNI_EUA_por_Cidade, zipcode, by=c("state","city"))
 View(d)
 
 ## Packages para mapas
-#install.packages("ggmap")
+install.packages("ggmap")
 library(ggmap)
 
 us<-map_data('state')
