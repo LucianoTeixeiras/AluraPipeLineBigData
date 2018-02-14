@@ -42,6 +42,8 @@ write.csv(rbind(df_OVNI), file = "OVNIS.csv")
 
 # df_OVNI <- read.csv("OVNIS.csv",stringsAsFactors = FALSE)
 
+View(df_OVNI)
+
 ######################################## 2) Explore
 
 # Linhas e colunas
@@ -56,6 +58,8 @@ OVNI_EUA_por_Estado = sqldf("select State, count(*) Views
                           group by state
                           order by 2 desc")
 
+View(OVNI_EUA_por_Estado)
+
 # Perceba nomes ausentes de estados e o fato de termos mais de 51 estados
 
 OVNI_EUA_por_Cidade = 
@@ -67,6 +71,8 @@ OVNI_EUA_por_Cidade =
                 having count(*) >= 10
                 order by 3 desc")
 
+View(OVNI_EUA_por_Cidade)
+
 OVNI_CA = sqldf("select Shape, City, count(*) Views  
                 from df_OVNI 
                 where State = 'CA'
@@ -74,9 +80,10 @@ OVNI_CA = sqldf("select Shape, City, count(*) Views
                 having count(*) > 10
                 order by 3 desc")
 
+View(OVNI_CA)
 
 ## Packages para montar gráficos
-# install.packages('ggplot2')
+install.packages('ggplot2')
 library(ggplot2)
 
 OVNI_EUA_por_Tipo = sqldf("select State, Shape, count(*) Views  
@@ -86,22 +93,29 @@ OVNI_EUA_por_Tipo = sqldf("select State, Shape, count(*) Views
                 group by state, shape
                 order by 3 desc")
 
+View(OVNI_EUA_por_Tipo)
+
 ggplot(OVNI_EUA_por_Tipo, aes(x = State, y = Views)) +
   geom_col(aes(fill = Shape))
 
 # install.packages('zipcode') 
 library(zipcode)
 data(zipcode)
+View(zipcode)
 
 # Atenção: temos vários CEPs por cidade, logo haverá diferentes valores para latitude e longitude 
 
 d <- merge(OVNI_EUA_por_Cidade, zipcode, by=c("state","city"))
+
+View(d)
 
 ## Packages para mapas
 #install.packages("ggmap")
 library(ggmap)
 
 us<-map_data('state')
+
+View(us)
 
 ggplot(d,aes(longitude,latitude)) +
   geom_polygon(data=us,aes(x=long,y=lat,group=group),color='gray',fill=NA,alpha=.35)+
